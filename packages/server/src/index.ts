@@ -1,17 +1,20 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { schema } from "./test";
+import { createDatabaseConnection } from "./utils/createDbConnection";
 
 const app = express();
 
-app.get("/test", async (req, res) => {
-  res.send("hello world");
-});
+const main = async () => {
+  await createDatabaseConnection();
 
-const apollo = new ApolloServer({ schema });
+  const apollo = new ApolloServer({ schema });
 
-apollo.applyMiddleware({ app });
+  apollo.applyMiddleware({ app });
 
-app.listen(4000, () => {
-  console.log("App is listening on port 4000");
-});
+  app.listen(4000, () => {
+    console.log("App is listening on port 4000");
+  });
+};
+
+main();
