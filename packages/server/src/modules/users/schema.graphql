@@ -1,0 +1,9 @@
+type User {
+  username: string
+  id: string
+  email: string
+}
+
+type Muatation {
+  register(username: string!, email: string!): boolean!
+}

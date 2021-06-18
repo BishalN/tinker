@@ -1,7 +1,7 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
-const sequelize = new Sequelize("sqlite::memory");
+import { DataTypes, Model } from "sequelize";
+import { sequelize } from "../utils/createDbConnection";
 
-class User extends Model {}
+export class User extends Model {}
 User.init(
   {
     username: {
@@ -13,16 +13,14 @@ User.init(
       allowNull: false,
       unique: true,
     },
+    id: { type: DataTypes.UUID, primaryKey: true },
   },
   {
-    sequelize, // We need to pass the connection instance
-    modelName: "User", // We need to choose the model name
+    sequelize,
+    modelName: "User",
   }
 );
 
 export const synchronizeDatabase = async () => {
   await sequelize.sync({ force: true });
 };
-
-// the defined model is the class itself
-console.log(User === sequelize.models.User); // true

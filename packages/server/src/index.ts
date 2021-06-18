@@ -1,12 +1,19 @@
 import express from "express";
-import { ApolloServer } from "apollo-server-express";
-import { schema } from "./test";
+import { ApolloServer, UserInputError } from "apollo-server-express";
+// import { schema } from "./test";
 import { createDatabaseConnection } from "./utils/createDbConnection";
+import { synchronizeDatabase, User } from "./models/User";
+import { GraphQLFileLoader, loadSchema } from "graphql-tools";
+import { schema } from "./modules/users/auth";
 
 const app = express();
 
 const main = async () => {
   await createDatabaseConnection();
+
+  // const path = "./modules/**/*.graphql";
+
+  await synchronizeDatabase();
 
   const apollo = new ApolloServer({ schema });
 

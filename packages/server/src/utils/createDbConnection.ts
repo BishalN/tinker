@@ -3,6 +3,9 @@ import { Sequelize } from "sequelize";
 export const sequelize = new Sequelize("tinker", "postgres", "postgres", {
   host: "localhost",
   dialect: "postgres",
+  logging: (sql, timing) => {
+    console.log(sql);
+  },
 });
 
 export const createDatabaseConnection = async () => {
