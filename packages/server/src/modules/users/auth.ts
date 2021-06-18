@@ -3,30 +3,35 @@ import { User } from "../../models/User";
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 
 const typeDefs = `
-type User {
-    username: String
-    id: String
-    email: String
-  }
-  
-  type Muatation {
-    register(username: String!, email: String!): Boolean!
+
+type Query {
+    hello: String
   }
 
+  input User {
+      username:String
+      email: String
+  }
+  
+  type Mutation {
+    register(user:User): Boolean!
+  }  
 
   
 `;
 const resolvers = {
   Mutation: {
     register: async (root, args, context) => {
-      const { username, email } = args;
-      try {
-        const user = await User.create({ username, email });
-        console.log(user);
-      } catch (error) {
-        throw new Error("unable to register");
-      }
+      const { username, email } = args.user;
+      console.log(username, email);
+      const user = await User.create({ username, email });
+
       return true;
+    },
+  },
+  Query: {
+    hello: (root, args, context) => {
+      return "Hello world!";
     },
   },
 };
