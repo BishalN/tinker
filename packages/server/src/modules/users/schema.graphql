@@ -1,9 +1,12 @@
-type User {
-  username: string
-  id: string
-  email: string
+input User {
+  username: String
+  email: String
 }
 
-type Muatation {
-  register(username: string!, email: string!): boolean!
+type Mutation {
+  register(username: String!, email: String!): Boolean!
+}
+
+type Query {
+  hello: String
 }
