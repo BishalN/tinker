@@ -8,7 +8,10 @@
     "gen-schema-types": "ts-node src/utils/createTypes.ts"
   },
   "devDependencies": {
+    "@types/connect-redis": "^0.0.16",
+    "@types/express-session": "^1.17.3",
     "@types/graphql": "^14.5.0",
+    "@types/ioredis": "^4.26.4",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.170",
     "@types/node": "^15.12.2",
@@ -25,9 +28,12 @@
   "dependencies": {
     "@gql2ts/from-schema": "^2.0.0-4",
     "apollo-server-express": "^2.25.1",
+    "connect-redis": "^6.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.5",
+    "ioredis": "^4.27.6",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.2"
