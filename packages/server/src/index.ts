@@ -10,12 +10,12 @@ import { redis } from "./utils/redis";
 
 const RedisStore = connectRedis(session as any);
 
-const app = express();
+export const app = express();
 
 const main = async () => {
   await createDatabaseConnection();
 
-  await synchronizeDatabase();
+  // await synchronizeDatabase();
 
   app.use(
     session({
