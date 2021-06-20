@@ -4,6 +4,11 @@ import { sequelize } from "../utils/createDbConnection";
 export class User extends Model {}
 User.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,10 +18,9 @@ User.init(
       allowNull: false,
       unique: true,
     },
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
@@ -26,5 +30,5 @@ User.init(
 );
 
 export const synchronizeDatabase = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: true }); //force it in test database
 };

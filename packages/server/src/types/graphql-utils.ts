@@ -1,21 +1,16 @@
-// import { Redis } from "ioredis";
+import { Redis } from "ioredis";
 import express from "express";
 
-// import { userLoader } from "../loaders/UserLoader";
-// import { PubSub } from "graphql-yoga";
-
-// export interface Session extends Express.Session {
-//   userId?: string;
-// }
+export interface Session {
+  userEmail?: string;
+}
 
 export interface Context {
-  //   redis: Redis;
-  url: string;
-  //   session: Session;
+  redis: Redis;
+  // url: string;
+  session: Session;
   req: Express.Request;
-  res: express.Response;
-  //   userLoader: ReturnType<typeof userLoader>;
-  //   pubsub: PubSub;
+  res: Express.Response;
 }
 
 export type Resolver = (
