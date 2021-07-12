@@ -3,9 +3,7 @@ import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeTypeDefs } from "@graphql-tools/merge";
 import { mergeResolvers } from "@graphql-tools/merge";
 import { makeExecutableSchema } from "apollo-server-express";
-import { print } from "graphql";
 import path from "path";
-import fs from "fs";
 
 const typesArray = loadFilesSync(
   path.join(__dirname, "../modules/**/*.graphql"),

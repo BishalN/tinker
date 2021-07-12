@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize("tinker-dev", "postgres", "postgres", {
+export const sequelize = new Sequelize("tinker_dev", "postgres", "postgres", {
   host: "localhost",
   dialect: "postgres",
   logging: (sql, timing) => {
