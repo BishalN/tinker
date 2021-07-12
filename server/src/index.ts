@@ -14,6 +14,7 @@ export const app = express();
 
 const main = async () => {
   await createDatabaseConnection();
+  await synchronizeDatabase();
 
   app.use(
     session({

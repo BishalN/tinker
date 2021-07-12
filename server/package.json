@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --files src/index.ts ",
     "gen-schema-types": "ts-node --files src/utils/createTypes.ts",
-    "migrate": "sequelize-cli db:migrate",
-    "migrate:reset": "sequelize-cli db:migrate:undo:all && yarn run migrate",
-    "test": "NODE_ENV=test jest --testTimeout=10000",
-    "pretest": "NODE_ENV=test yarn run migrate:reset"
+    "test": "NODE_ENV=test jest --testTimeout=10000"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
