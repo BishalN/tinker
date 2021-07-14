@@ -12,7 +12,7 @@ const RedisStore = connectRedis(session as any);
 
 export const app = express();
 
-const main = async () => {
+export const main = async () => {
   await createDatabaseConnection();
   await synchronizeDatabase();
 
