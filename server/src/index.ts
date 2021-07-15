@@ -14,6 +14,7 @@ export const app = express();
 
 export const main = async () => {
   await createDatabaseConnection();
+  //only for dev
   await synchronizeDatabase();
 
   app.use(

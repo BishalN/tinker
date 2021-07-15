@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../utils/createDbConnection";
+import { Task } from "./Tasks";
 
 export class User extends Model {}
 User.init(
@@ -28,6 +29,9 @@ User.init(
     modelName: "User",
   }
 );
+
+//defines a foreign key on the task table
+User.hasMany(Task, { onDelete: "CASCADE" });
 
 export const synchronizeDatabase = async () => {
   await sequelize.sync({ force: true }); //force it in test database

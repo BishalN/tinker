@@ -1,0 +1,18 @@
+input TaskInput {
+  task: String!
+  status: String
+}
+
+type Task {
+  id: ID!
+  task: String!
+  status: String!
+}
+
+type Mutation {
+  createTask(task: TaskInput): Task!
+}
+
+type Query {
+  getTasks: [Task]!
+}

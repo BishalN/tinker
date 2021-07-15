@@ -20,15 +20,27 @@ line: number;
 column: number;
 }
 
-interface IUser {
-username?: string | null;
-email?: string | null;
+interface ITaskInput {
+task: string;
+status?: string | null;
+}
+
+interface ITask {
+__typename: "Task";
+id: string;
+task: string;
+status: string;
 }
 
 interface IMutation {
 __typename: "Mutation";
+createTask: ITask;
 register: boolean;
 login: boolean;
+}
+
+interface ICreateTaskOnMutationArguments {
+task?: ITaskInput | null;
 }
 
 interface IRegisterOnMutationArguments {
@@ -40,6 +52,11 @@ password: string;
 interface ILoginOnMutationArguments {
 email: string;
 password: string;
+}
+
+interface IUser {
+username?: string | null;
+email?: string | null;
 }
 
 interface IUserOutput {

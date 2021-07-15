@@ -17,9 +17,12 @@ export const resolvers: ResolverMap = {
           email,
           password: hashedPassword,
         });
-        (req.session as any).userEmail = (user as any).email;
+        console.log((user.toJSON() as any).id);
+        (req.session as any).userId = (user.toJSON() as any).id;
+        console.log((req.session as any).userId);
         return true;
       } catch (error) {
+        //my awesome
         throw new Error(error);
       }
     },
@@ -39,7 +42,8 @@ export const resolvers: ResolverMap = {
           throw new Error("Invalid credentials");
         }
         //authenticated user set the session
-        (req.session as any).userEmail = (user as any).email;
+        (req.session as any).userId = (user.toJSON() as any).id;
+        console.log((req.session as any).userId);
         return true;
       } catch (error) {
         throw new Error(error);
@@ -52,7 +56,7 @@ export const resolvers: ResolverMap = {
     },
     me: async (_, __, { req, res }: Context) => {
       return User.findOne({
-        where: { email: (req.session as any).userEmail },
+        where: { id: (req.session as any).userId },
         attributes: ["username", "email"],
       });
     },
